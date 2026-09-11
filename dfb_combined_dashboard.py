@@ -4,7 +4,7 @@ import plotly.express as px
 import os
 import base64
 
-st.set_page_config(page_title="DFB Player - Analytics", page_icon="🇩🇪", layout="wide")
+st.set_page_config(page_title="DFB Player", page_icon="🇩🇪", layout="wide")
 
 def add_bg_watermark():
     image_path = "image_a2a839.png"
@@ -48,12 +48,7 @@ with tab_gk:
 
         st.divider()
         st.subheader("🧤 DFB GK 세부 스탯")
-        st.dataframe(
-            gk_df.style.background_gradient(cmap="Blues", subset=["선방", "선방률(%)", "클린시트", "클린시트율(%)"])
-                     .format({"90분환산": "{:.1f}", "90분당실점": "{:.2f}", "선방률(%)": "{:.1f}", "클린시트율(%)": "{:.1f}", "PK선방률(%)": "{:.1f}"}),
-            width='stretch',
-            height=400
-        )
+        st.dataframe(gk_df, height=400)
         st.divider()
         col_a, col_b = st.columns(2)
         with col_a:
@@ -82,12 +77,7 @@ with tab_cb:
 
         st.divider()
         st.subheader("🛡️ 독일 국대 중앙 센터백(CB) 실전 수비 스탯")
-        st.dataframe(
-            cb_df.style.background_gradient(cmap="Reds", subset=["수비기여도", "블록슛", "볼탈취", "클리어링", "클린시트"])
-                     .format({"출전시간(분)": "{:.0f}", "실점기대값(xG)": "{:.2f}"}),
-            width='stretch',
-            height=400
-        )
+        st.dataframe(cb_df, height=400)
         st.divider()
         col_c, col_d = st.columns(2)
         with col_c:
@@ -116,12 +106,7 @@ with tab_fb:
 
         st.divider()
         st.subheader("🏃‍♂️ 독일 국대 풀백(LB/RB) 수비 및 패스 세부 스탯")
-        st.dataframe(
-            fb_df.style.background_gradient(cmap="Greens", subset=["수비기여도", "볼탈취", "클리어링", "어시스트", "찬스메이킹", "패스성공률(%)"])
-                     .format({"출전시간(분)": "{:.0f}", "패스성공률(%)": "{:.1f}", "롱볼성공률(%)": "{:.1f}", "크로스성공률(%)": "{:.1f}", "기대어시스트(xA)": "{:.2f}", "실점기대값(xG)": "{:.2f}"}),
-            width='stretch',
-            height=400
-        )
+        st.dataframe(fb_df, height=400)
         st.divider()
         col_e, col_f = st.columns(2)
         with col_e:
@@ -150,12 +135,7 @@ with tab_mf:
 
         st.divider()
         st.subheader("🎯 독일 국대 미드필더(MF) 패스, 점유율 및 수비 스탯")
-        st.dataframe(
-            mf_df.style.background_gradient(cmap="Purples", subset=["볼탈취", "수비기여도", "성공패스", "패스성공률(%)", "찬스메이킹", "점유율영향력(%)"])
-                     .format({"출전시간(분)": "{:.0f}", "패스성공률(%)": "{:.1f}", "롱볼성공률(%)": "{:.1f}", "기대어시스트(xA)": "{:.2f}", "점유율영향력(%)": "{:.1f}"}),
-            width='stretch',
-            height=400
-        )
+        st.dataframe(mf_df, height=400)
         st.divider()
         col_g, col_h = st.columns(2)
         with col_g:
@@ -184,12 +164,7 @@ with tab_wg:
 
         st.divider()
         st.subheader("⚡ 독일 국대 윙어(WING) 슈팅, 패스 및 점유율 세부 스탯")
-        st.dataframe(
-            wg_df.style.background_gradient(cmap="Oranges", subset=["득점", "예상골(xG)", "슛", "유효슈팅", "어시스트", "성공패스", "패스성공률(%)"])
-                     .format({"출전시간(분)": "{:.0f}", "예상골(xG)": "{:.2f}", "xGOT": "{:.2f}", "PK제외xG": "{:.2f}", "기대어시스트(xA)": "{:.2f}", "패스성공률(%)": "{:.1f}", "긴패스성공률(%)": "{:.1f}", "점유율영향력(%)": "{:.1f}"}),
-            width='stretch',
-            height=400
-        )
+        st.dataframe(wg_df, height=400)
         st.divider()
         col_i, col_j = st.columns(2)
         with col_i:
@@ -218,12 +193,7 @@ with tab_st:
 
         st.divider()
         st.subheader("⚽ 독일 국대 스트라이커(ST) 슈팅, 패스 및 득점/어시스트 기록 세부 스탯")
-        st.dataframe(
-            st_df.style.background_gradient(cmap="Reds", subset=["득점", "예상골(xG)", "슛", "유효슈팅", "어시스트", "성공패스", "패스성공률(%)"])
-                     .format({"출전시간(분)": "{:.0f}", "예상골(xG)": "{:.2f}", "xGOT": "{:.2f}", "PK제외xG": "{:.2f}", "기대어시스트(xA)": "{:.2f}", "패스성공률(%)": "{:.1f}", "긴패스성공률(%)": "{:.1f}", "점유율영향력(%)": "{:.1f}"}),
-            width='stretch',
-            height=400
-        )
+        st.dataframe(st_df, height=400)
         st.divider()
         col_k, col_l = st.columns(2)
         with col_k:
